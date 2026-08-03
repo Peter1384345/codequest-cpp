@@ -9,6 +9,9 @@
   var rule = style.getPropertyValue('--rule').trim();
   var bg2 = style.getPropertyValue('--bg2').trim();
 
+  // Chinese-compatible font family for all chart text
+  var CN_FONT = '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif';
+
   // ===== Chart 1: 四周学习强度与难度递进曲线 =====
   var el1 = document.getElementById('chart-progression');
   if (el1) {
@@ -47,22 +50,24 @@
     ];
 
     chart1.setOption({
+      textStyle: { fontFamily: CN_FONT },
       tooltip: {
         trigger: 'axis',
         appendToBody: true,
-        axisPointer: { type: 'cross' }
+        axisPointer: { type: 'cross' },
+        textStyle: { fontFamily: CN_FONT }
       },
       legend: {
         data: ['当日学习时长(小时)', '知识点难度系数'],
         top: 0,
-        textStyle: { color: muted, fontSize: 12 }
+        textStyle: { color: muted, fontSize: 12, fontFamily: CN_FONT }
       },
       grid: { left: 48, right: 48, top: 50, bottom: 40 },
       xAxis: {
         type: 'category',
         data: days,
         axisLine: { lineStyle: { color: rule } },
-        axisLabel: { color: muted, fontSize: 10, interval: 1 },
+        axisLabel: { color: muted, fontSize: 10, interval: 1, fontFamily: CN_FONT },
         axisTick: { show: false }
       },
       yAxis: [
@@ -70,18 +75,18 @@
           type: 'value',
           name: '时长(h)',
           min: 0, max: 5,
-          nameTextStyle: { color: muted, fontSize: 11 },
+          nameTextStyle: { color: muted, fontSize: 11, fontFamily: CN_FONT },
           axisLine: { show: false },
-          axisLabel: { color: muted, fontSize: 11 },
+          axisLabel: { color: muted, fontSize: 11, fontFamily: CN_FONT },
           splitLine: { lineStyle: { color: rule, type: 'dashed' } }
         },
         {
           type: 'value',
           name: '难度',
           min: 0, max: 5,
-          nameTextStyle: { color: muted, fontSize: 11 },
+          nameTextStyle: { color: muted, fontSize: 11, fontFamily: CN_FONT },
           axisLine: { show: false },
-          axisLabel: { color: muted, fontSize: 11 },
+          axisLabel: { color: muted, fontSize: 11, fontFamily: CN_FONT },
           splitLine: { show: false }
         }
       ],
@@ -137,16 +142,18 @@
   if (el2) {
     var chart2 = echarts.init(el2, null, { renderer: 'svg' });
     chart2.setOption({
+      textStyle: { fontFamily: CN_FONT },
       tooltip: {
         trigger: 'item',
         appendToBody: true,
-        formatter: '{b}<br/>出现频率: {c}%'
+        formatter: '{b}<br/>出现频率: {c}%',
+        textStyle: { fontFamily: CN_FONT }
       },
       legend: {
         orient: 'vertical',
         right: 10,
         top: 'center',
-        textStyle: { color: muted, fontSize: 12 }
+        textStyle: { color: muted, fontSize: 12, fontFamily: CN_FONT }
       },
       series: [{
         type: 'pie',
@@ -157,7 +164,8 @@
           show: true,
           formatter: '{b}\n{d}%',
           color: ink,
-          fontSize: 11
+          fontSize: 11,
+          fontFamily: CN_FONT
         },
         labelLine: { lineStyle: { color: rule } },
         itemStyle: {
@@ -182,23 +190,25 @@
   if (el3) {
     var chart3 = echarts.init(el3, null, { renderer: 'svg' });
     chart3.setOption({
+      textStyle: { fontFamily: CN_FONT },
       tooltip: {
         trigger: 'axis',
         appendToBody: true,
-        axisPointer: { type: 'shadow' }
+        axisPointer: { type: 'shadow' },
+        textStyle: { fontFamily: CN_FONT }
       },
       grid: { left: 90, right: 40, top: 30, bottom: 30 },
       xAxis: {
         type: 'value',
         axisLine: { show: false },
-        axisLabel: { color: muted, fontSize: 11 },
+        axisLabel: { color: muted, fontSize: 11, fontFamily: CN_FONT },
         splitLine: { lineStyle: { color: rule, type: 'dashed' } }
       },
       yAxis: {
         type: 'category',
         data: ['官方平台', '图书', '工具(IDE)', '题单', '在线评测OJ', '视频课程'],
         axisLine: { lineStyle: { color: rule } },
-        axisLabel: { color: ink, fontSize: 12, fontWeight: 600 },
+        axisLabel: { color: ink, fontSize: 12, fontWeight: 600, fontFamily: CN_FONT },
         axisTick: { show: false }
       },
       series: [{
@@ -218,6 +228,7 @@
           color: ink,
           fontSize: 12,
           fontWeight: 700,
+          fontFamily: CN_FONT,
           formatter: '{c} 个'
         },
         itemStyle: {

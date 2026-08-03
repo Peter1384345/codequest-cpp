@@ -3814,11 +3814,27 @@ flowchart LR
 <!-- ===== Mermaid ===== -->
 <script src="./_shared/js/mermaid.min.js"></script>
 <script>
-mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'neutral',
+  securityLevel: 'loose',
+  flowchart: { useMaxWidth: true, htmlLabels: true },
+  themeVariables: {
+    fontFamily: '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif'
+  }
+});
 </script>
 
 <!-- ===== ECharts ===== -->
 <script src="./_shared/js/echarts.min.js"></script>
+<script>
+// Set global default font for ECharts to ensure Chinese characters render correctly
+if (window.echarts) {
+  echarts.registerTheme('cn-font', {
+    textStyle: { fontFamily: '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif' }
+  });
+}
+</script>
 <script src="assets/charts.js"></script>
 
 
