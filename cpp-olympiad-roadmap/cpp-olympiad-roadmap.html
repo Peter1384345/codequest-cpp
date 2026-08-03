@@ -3828,32 +3828,66 @@ flowchart LR
   </div>
 </div>
 
-<!-- ===== Mermaid (CDN with local fallback) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" onerror="this.onerror=null;this.src='./_shared/js/mermaid.min.js'"></script>
+<!-- ===== Charting Libraries: async CDN-first loader with local fallback ===== -->
 <script>
-if (window.mermaid) {
-mermaid.initialize({
-  startOnLoad: true,
-  theme: 'neutral',
-  securityLevel: 'loose',
-  flowchart: { useMaxWidth: true, htmlLabels: true },
-  themeVariables: {
-    fontFamily: '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif'
-  }
-});
-}
-</script>
+(function() {
+  var CN_FONT = '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif';
 
-<!-- ===== ECharts (CDN with local fallback) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js" onerror="this.onerror=null;this.src='./_shared/js/echarts.min.js'"></script>
-<script>
-if (window.echarts) {
-  echarts.registerTheme('cn-font', {
-    textStyle: { fontFamily: '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif' }
-  });
-}
+  function loadScript(src, fallbackSrc) {
+    return new Promise(function(resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = function() { resolve(); };
+      s.onerror = function() {
+        if (fallbackSrc) {
+          var fb = document.createElement('script');
+          fb.src = fallbackSrc;
+          fb.onload = function() { resolve(); };
+          fb.onerror = function() { reject(new Error('Failed: ' + fallbackSrc)); };
+          document.head.appendChild(fb);
+        } else {
+          reject(new Error('Failed: ' + src));
+        }
+      };
+      document.head.appendChild(s);
+    });
+  }
+
+  // Load Mermaid: CDN -> local fallback -> init + render
+  loadScript(
+    'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js',
+    './_shared/js/mermaid.min.js'
+  ).then(function() {
+    if (window.mermaid) {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'neutral',
+        securityLevel: 'loose',
+        flowchart: { useMaxWidth: true, htmlLabels: true },
+        themeVariables: { fontFamily: CN_FONT }
+      });
+      // Manually render (needed when loading after DOMContentLoaded)
+      mermaid.run();
+    }
+  }).catch(function(e) { console.error('Mermaid load failed:', e); });
+
+  // Load ECharts: CDN -> local fallback -> register theme -> load charts.js
+  loadScript(
+    'https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js',
+    './_shared/js/echarts.min.js'
+  ).then(function() {
+    if (window.echarts) {
+      echarts.registerTheme('cn-font', {
+        textStyle: { fontFamily: CN_FONT }
+      });
+    }
+    // Only load chart logic after echarts is ready
+    var cs = document.createElement('script');
+    cs.src = 'assets/charts.js';
+    document.head.appendChild(cs);
+  }).catch(function(e) { console.error('ECharts load failed:', e); });
+})();
 </script>
-<script src="assets/charts.js"></script>
 
 
 <!-- ===== Check-in Interaction ===== -->
