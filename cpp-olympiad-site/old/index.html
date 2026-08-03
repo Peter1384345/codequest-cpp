@@ -2356,6 +2356,12 @@ flowchart LR
     <div id="chart-progression" style="width:100%;min-height:360px"></div>
     <p class="sub">横轴为学习天数（1–28），纵轴为当日建议学习时长（小时）与知识点难度系数（1–5）。前两周以"广度铺开"为主，后两周转入"深度攻坚"。</p>
   </figure>
+
+  <figure class="chart-figure">
+    <figcaption>CSP-J 第二轮高频考点分布</figcaption>
+    <div id="chart-topics" style="width:100%;min-height:360px"></div>
+    <p class="sub">基于近三年 CSP-J 第二轮真题统计，枚举与模拟占比最高，是备考重点。</p>
+  </figure>
 </section>
 
 <!-- ============ CHECKIN SERIES ============ -->
@@ -3811,8 +3817,8 @@ flowchart LR
   </div>
 </div>
 
-<!-- ===== Mermaid ===== -->
-<script src="./_shared/js/mermaid.min.js"></script>
+<!-- ===== Mermaid (CDN - local file too large for GitHub Pages) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
 mermaid.initialize({
   startOnLoad: true,
@@ -3825,8 +3831,8 @@ mermaid.initialize({
 });
 </script>
 
-<!-- ===== ECharts ===== -->
-<script src="./_shared/js/echarts.min.js"></script>
+<!-- ===== ECharts (CDN - local file too large for GitHub Pages) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <script>
 // Set global default font for ECharts to ensure Chinese characters render correctly
 if (window.echarts) {
