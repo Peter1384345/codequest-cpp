@@ -3817,9 +3817,10 @@ flowchart LR
   </div>
 </div>
 
-<!-- ===== Mermaid (CDN - local file too large for GitHub Pages) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<!-- ===== Mermaid (CDN with local fallback) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" onerror="this.onerror=null;this.src='./_shared/js/mermaid.min.js'"></script>
 <script>
+if (window.mermaid) {
 mermaid.initialize({
   startOnLoad: true,
   theme: 'neutral',
@@ -3829,12 +3830,12 @@ mermaid.initialize({
     fontFamily: '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif'
   }
 });
+}
 </script>
 
-<!-- ===== ECharts (CDN - local file too large for GitHub Pages) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<!-- ===== ECharts (CDN with local fallback) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js" onerror="this.onerror=null;this.src='./_shared/js/echarts.min.js'"></script>
 <script>
-// Set global default font for ECharts to ensure Chinese characters render correctly
 if (window.echarts) {
   echarts.registerTheme('cn-font', {
     textStyle: { fontFamily: '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif' }
