@@ -439,31 +439,31 @@
       }
     },
     20: {
-      title: '贪心算法',
-      videoBvid: 'BV1gCMUzoEwT', videoPage: 1, videoThumb: './assets/thumbs/day20.jpg',
+      title: '递推',
+      videoBvid: 'BV1QX4y1J7Pk', videoPage: 1, videoThumb: './assets/thumbs/day20.jpg',
       concept: {
-        text: '<p>' + C('贪心算法') + ' 的核心思想是：每一步都做出当前看起来最优的选择，从而希望最终得到全局最优解。</p>' +
-              '<p>贪心算法适用于具有' + C('最优子结构') + '和' + C('贪心选择性质') + '的问题。例如：活动安排问题（每次选结束最早的活动）、找零钱问题（每次选最大面额）。</p>' +
-              '<p>贪心算法的优点是简单高效，时间复杂度通常为 O(n log n) 或更低。缺点是不能保证所有问题都得到最优解，需要证明贪心策略的正确性。</p>' +
-              '<p>CSP-J 中常见的贪心题目类型：区间调度、 Huffman 编码思想、最小生成树的 Kruskal 算法等。入门阶段主要掌握简单的排序后贪心策略。</p>',
-        keyPoints: ['贪心：每一步选当前最优', '需要证明贪心策略正确', '常见应用：活动安排、区间覆盖', '通常先排序再贪心', '不是所有问题都适合贪心']
+        text: '<p>' + C('递推') + ' 是一种用已知推未知的算法思想。从基础情况出发，通过递推关系式逐步求出后续结果。</p>' +
+              '<p>最经典的例子是' + C('斐波那契数列') + '：f(1)=1, f(2)=1, f(n)=f(n-1)+f(n-2)。每一项都由前两项相加得到。</p>' +
+              '<p>递推的三要素：① 初始条件（基础情况）；② 递推关系式（状态转移方程）；③ 终止条件（求到第几项）。</p>' +
+              '<p>常见递推模型：斐波那契数列、台阶问题（每次走 1 或 2 步，走到第 n 级有多少种走法）、组合数递推等。递推通常用数组存储中间结果，避免重复计算。</p>',
+        keyPoints: ['递推：用已知推未知', '三要素：初始条件+递推式+终止条件', '斐波那契：f(n)=f(n-1)+f(n-2)', '台阶问题也是经典递推', '用数组存储中间结果避免重复计算']
       },
       quizzes: [
-        { type: 'choice', question: '用贪心法找零钱，面额为 [1,5,10,25]，凑 41 分最少需要几个硬币？', options: ['4个', '5个', '6个', '7个'], answer: 0, explanation: '贪心策略：每次选最大面额。25+10+5+1=41，共4个硬币。这是最优解。注意某些面额组合下贪心不一定最优，但这道题可以。', hints: ['每次选能用的最大面额', '25+10+5+1=41', '答案是 A: 4个'] },
-        { type: 'fill', question: '补全代码：活动安排问题中，按结束时间排序后选择相容活动。', code: '// 已按结束时间排序\nint cnt = 1, lastEnd = a[0].end;\nfor (int i = 1; i < n; i++)\n  if (_________) {\n    cnt++;\n    lastEnd = a[i].end;\n  }', answers: ['a[i].start>=lastEnd', 'a[i].start >= lastEnd'], explanation: '选择开始时间晚于或等于上一个活动结束时间的活动，即 a[i].start >= lastEnd。这样才能保证活动之间不冲突。', hints: ['活动的开始时间要晚于上一个的结束时间', '用 >= 判断', '答案是 a[i].start>=lastEnd'] }
+        { type: 'choice', question: '斐波那契数列 f(1)=1, f(2)=1, f(n)=f(n-1)+f(n-2)，f(6) 等于多少？', options: ['5', '8', '13', '21'], answer: 1, explanation: 'f(3)=2, f(4)=3, f(5)=5, f(6)=8。斐波那契数列：1,1,2,3,5,8...', hints: ['从 f(3) 开始逐步计算', 'f(3)=f(2)+f(1)=2', '答案是 B: 8'] },
+        { type: 'fill', question: '补全代码：用递推计算斐波那契数列第 n 项。', code: 'f[1] = 1; f[2] = 1;\nfor (int i = 3; i <= n; i++)\n  f[i] = _________;', answers: ['f[i-1]+f[i-2]', 'f[i - 1] + f[i - 2]'], explanation: '斐波那契递推公式：f(i) = f(i-1) + f(i-2)。每一项等于前两项之和。', hints: ['递推公式是什么？', '前两项之和', '答案是 f[i-1]+f[i-2]'] }
       ],
       challenge: {
-        title: '求极差',
-        description: '<p>给出 n 和 n 个整数 ai，求这 n 个整数中的极差。极差的意思是一组数中的最大值减去最小值的差。</p>' +
-                     '<p><strong>输入：</strong>第一行输入一个正整数 n，表示整数个数。第二行输入 n 个整数，以空格隔开。</p>' +
-                     '<p><strong>输出：</strong>输出一个整数，表示这 n 个整数的极差。</p>' +
+        title: '数楼梯',
+        description: '<p>楼梯有 N 阶，上楼可以一步上一阶，也可以一步上二阶。编写一个程序，计算从第 0 阶到第 N 阶共有多少种走法。</p>' +
+                     '<p><strong>输入：</strong>一个正整数 N（1 ≤ N ≤ 5000）。</p>' +
+                     '<p><strong>输出：</strong>一个正整数，表示走到第 N 阶的走法数。注意结果可能很大。</p>' +
                      '<p><strong>输入示例：</strong></p>' +
-                     '<pre ' + PRE + '>6\n4 1 5 1 4 1</pre>' +
-                     '<p><strong>输出示例：</strong></p>' +
                      '<pre ' + PRE + '>4</pre>' +
-                     '<p>提示：遍历数组找出最大值和最小值，相减即可。也可以先排序再取首尾差值。</p>',
-        link: 'https://www.luogu.com.cn/problem/P5724', linkText: '洛谷 P5724 - 求极差',
-        starterCode: '#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int n, a[100];\n    cin >> n;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    // 求最大值减最小值\n    \n    return 0;\n}'
+                     '<p><strong>输出示例：</strong></p>' +
+                     '<pre ' + PRE + '>5</pre>' +
+                     '<p>提示：这是经典的递推问题。f(1)=1, f(2)=2, f(n)=f(n-1)+f(n-2)。注意 N 较大时需要高精度。</p>',
+        link: 'https://www.luogu.com.cn/problem/P1255', linkText: '洛谷 P1255 - 数楼梯',
+        starterCode: '#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    // 递推计算走法数\n    \n    return 0;\n}'
       }
     },
     21: {
@@ -573,29 +573,30 @@
       }
     },
     25: {
-      title: '排序综合应用',
-      videoBvid: 'BV1ywNJ63EgV', videoPage: 1, videoThumb: './assets/thumbs/day25.jpg',
+      title: '搜索入门（DFS/BFS）',
+      videoBvid: 'BV1BNTuzxEN9', videoPage: 1, videoThumb: './assets/thumbs/day25.jpg',
       concept: {
-        text: '<p>排序不仅用于简单的数字排列，还可以解决很多实际问题。例如：求中位数、找第 k 大元素、去重、统计频率等。</p>' +
-              '<p>求中位数：排序后，若 n 为奇数，中位数是 a[n/2]；若 n 为偶数，中位数是 (a[n/2-1] + a[n/2]) / 2.0。</p>' +
-              '<p>去重：排序后相同的元素会相邻，遍历一次即可去重。统计频率：排序后遍历，统计每个连续段的长度。</p>' +
-              '<p>排序 + 贪心是解决很多竞赛问题的经典组合。先排序将数据有序化，然后用贪心或二分等算法处理。</p>',
-        keyPoints: ['排序后求中位数很方便', '排序后相同元素相邻，便于去重', '排序 + 贪心是经典组合', '第 k 大元素可以排序后取', '排序是预处理的重要手段']
+        text: '<p>' + C('深度优先搜索（DFS）') + ' 是一种"一条路走到底，走不通就回退"的搜索策略。通常用递归或栈实现。</p>' +
+              '<p>DFS 的基本框架：从起点出发，标记当前节点已访问，然后依次尝试所有相邻的未访问节点。如果走到死路，回溯到上一个节点继续尝试其他方向。</p>' +
+              '<p>' + C('广度优先搜索（BFS）') + ' 是一种"逐层扩展"的搜索策略。用队列实现：把起点入队，每次取出队首节点，将其所有未访问的相邻节点入队，直到找到目标或队列为空。</p>' +
+              '<p>DFS 适合找所有方案（如八皇后、全排列），BFS 适合找最短路径（如迷宫最短步数）。两者都是 CSP-J 必考的核心算法。</p>',
+        keyPoints: ['DFS：一条路走到底再回溯', 'BFS：逐层扩展，用队列', 'DFS 用递归或栈实现', 'DFS 适合找所有方案', 'BFS 适合找最短路径']
       },
       quizzes: [
-        { type: 'choice', question: '数组 [3,1,4,1,5,9,2] 排序后，中位数是多少？', options: ['3', '4', '5', '1'], answer: 0, explanation: '排序后：[1,1,2,3,4,5,9]，共7个数。中位数是第4个数（下标3），即 3。', hints: ['先排序', '7个数的中位数是第4个', '答案是 A: 3'] },
-        { type: 'fill', question: '补全代码：排序后输出数组的中位数。', code: 'sort(a, a + n);\ncout << _________ << endl;', answers: ['a[n/2]', 'a[n / 2]'], explanation: '排序后，中位数位于数组中间位置，即 a[n/2]（整数除法）。对于奇数个元素，这就是正中间；偶数个元素，这是中间偏右的那个。', hints: ['中位数在数组中间', '下标是 n/2', '答案是 a[n/2]'] }
+        { type: 'choice', question: 'DFS（深度优先搜索）通常用什么数据结构实现？', options: ['队列', '栈或递归', '哈希表', '堆'], answer: 1, explanation: 'DFS 用栈（或递归）实现，一路走到底再回溯。递归本质上就是利用函数调用栈。', hints: ['DFS 是"走到底再回退"', '回退需要什么结构？', '答案是 B: 栈或递归'] },
+        { type: 'fill', question: '补全代码：BFS 中从队列取出队首元素。', code: 'queue<int> q;\nq.push(start);\nwhile (!q.empty()) {\n  int cur = q._________();\n  q.pop();\n  // 处理 cur 的相邻节点\n}', answers: ['front', 'front '], explanation: 'queue 的 front() 返回队首元素，pop() 删除队首。BFS 每次取出队首进行处理，将其相邻节点入队。', hints: ['查看队首元素的方法', '不是 top()，那是 stack', '答案是 front'] }
       ],
       challenge: {
-        title: '求第 k 小的数',
-        description: '<p>输入 n 个整数，求其中第 k 小的数。</p>' +
+        title: '迷宫',
+        description: '<p>给定一个 N×M 方格的迷宫，迷宫中有可通行的空地（.）和不可通行的障碍（#）。从起点 (sx, sy) 出发，只能上下左右移动，求到达终点 (tx, ty) 的最少步数。</p>' +
+                     '<p><strong>输入：</strong>第一行 N, M。接下来 N 行每行 M 个字符。最后一行 sx sy tx ty。</p>' +
                      '<p><strong>输入示例：</strong></p>' +
-                     '<pre ' + PRE + '>5 3\n5 1 3 2 4</pre>' +
+                     '<pre ' + PRE + '>5 5\n.....\n.###.\n.....\n.###.\n.....\n0 0 4 4</pre>' +
                      '<p><strong>输出示例：</strong></p>' +
-                     '<pre ' + PRE + '>3</pre>' +
-                     '<p>提示：排序后取 a[k-1]（因为下标从 0 开始）。</p>',
-        link: 'https://www.luogu.com.cn/problem/P1923', linkText: '洛谷 P1923 - 求第 k 小的数',
-        starterCode: '#include <iostream>\n#include <algorithm>\nusing namespace std;\n\nint main() {\n    int n, k, a[100];\n    cin >> n >> k;\n    for (int i = 0; i < n; i++) cin >> a[i];\n    // 求第 k 小的数\n    \n    return 0;\n}'
+                     '<pre ' + PRE + '>8</pre>' +
+                     '<p>提示：用 BFS 从起点搜索，第一次到达终点时的步数就是最短路径。DFS 也能搜索但不保证最短。</p>',
+        link: 'https://www.luogu.com.cn/problem/P1605', linkText: '洛谷 P1605 - 迷宫',
+        starterCode: '#include <iostream>\n#include <queue>\nusing namespace std;\n\nint dx[] = {0,0,1,-1};\nint dy[] = {1,-1,0,0};\n\nint main() {\n    int n, m;\n    char maze[100][100];\n    cin >> n >> m;\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < m; j++)\n            cin >> maze[i][j];\n    int sx, sy, tx, ty;\n    cin >> sx >> sy >> tx >> ty;\n    // BFS 求最短路径\n    \n    return 0;\n}'
       }
     },
     26: {

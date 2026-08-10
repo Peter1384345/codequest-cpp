@@ -3139,7 +3139,7 @@ flowchart LR
   <div class="day-header">
     <div class="day-title-group">
       <span class="day-num">DAY 20</span>
-      <span class="day-topic">枚举与模拟</span>
+      <span class="day-topic">递推</span>
     </div>
     <label class="checkin-toggle">
       <input type="checkbox" data-day="20">
@@ -3149,20 +3149,20 @@ flowchart LR
   <div class="day-body">
     <div class="day-block">
       <h5>今日任务</h5>
-      <p>掌握暴力枚举思路，练习计数问题、日期计算等模拟题型。</p>
+      <p>掌握递推思想（斐波那契数列、台阶问题），用已知推未知解决计数问题。</p>
     </div>
     <div class="day-block">
       <h5>视频课</h5>
       <div class="video-links">
-        <a href="https://www.bilibili.com/video/BV1UZ421H7q4/" target="_blank" rel="noopener">枚举算法（王老师·2024）</a>
-        <a href="https://www.bilibili.com/video/BV1VYsrefEEP/" target="_blank" rel="noopener">CSP-J 模拟算法真题（丁老师）</a>
+        <a href="https://www.bilibili.com/video/BV1QX4y1J7Pk/" target="_blank" rel="noopener">《小学生C++趣味编程》第37课 斐波那契数列与递推</a>
+        <a href="https://www.bilibili.com/video/BV1hLdfYAE7r/" target="_blank" rel="noopener">《递推算法》CSP-J算法精讲</a>
       </div>
     </div>
     <div class="day-block">
       <h5>🏆 今日挑战</h5>
       <div class="problem-links">
-        <a href="https://www.luogu.com.cn/problem/P5728" target="_blank" rel="noopener">洛谷 P5728 【深基5.例5】旗鼓相当的对手</a>
-        <a href="https://www.luogu.com.cn/problem/P5727" target="_blank" rel="noopener">洛谷 P5727 【深基5.例3】冰雹猜想</a>
+        <a href="https://www.luogu.com.cn/problem/P1255" target="_blank" rel="noopener">洛谷 P1255 数楼梯（递推基础）</a>
+        <a href="https://www.luogu.com.cn/problem/P1192" target="_blank" rel="noopener">洛谷 P1192 台阶问题（递推进阶）</a>
       </div>
     </div>
     <div class="day-block review-block">
@@ -3320,7 +3320,7 @@ flowchart LR
   <div class="day-header">
     <div class="day-title-group">
       <span class="day-num">DAY 25</span>
-      <span class="day-topic">二维数组</span>
+      <span class="day-topic">搜索入门（DFS/BFS）</span>
     </div>
     <label class="checkin-toggle">
       <input type="checkbox" data-day="25">
@@ -3330,19 +3330,20 @@ flowchart LR
   <div class="day-body">
     <div class="day-block">
       <h5>今日任务</h5>
-      <p>掌握矩阵转置、迷宫遍历、前缀和等二维数组经典操作。</p>
+      <p>掌握深度优先搜索（DFS）和广度优先搜索（BFS）思想，解决迷宫类问题。</p>
     </div>
     <div class="day-block">
       <h5>视频课</h5>
       <div class="video-links">
-        <a href="https://www.bilibili.com/video/BV1gymgY6Ec4/?p=47" target="_blank" rel="noopener">二维数组定义与使用</a>
-        <a href="https://www.bilibili.com/video/BV1gymgY6Ec4/?p=48" target="_blank" rel="noopener">二维数组·数组名与案例</a>
+        <a href="https://www.bilibili.com/video/BV1BNTuzxEN9/" target="_blank" rel="noopener">DFS 深度优先搜索入门</a>
+        <a href="https://www.bilibili.com/video/BV17Q2NYiEZL/" target="_blank" rel="noopener">搜索经典题目讲解：DFS、BFS</a>
       </div>
     </div>
     <div class="day-block">
       <h5>🏆 今日挑战</h5>
       <div class="problem-links">
-        <a href="https://www.luogu.com.cn/problem/P5729" target="_blank" rel="noopener">洛谷 P5729 【深基5.例7】工艺品制作</a>
+        <a href="https://www.luogu.com.cn/problem/P1605" target="_blank" rel="noopener">洛谷 P1605 迷宫（DFS基础）</a>
+        <a href="https://www.luogu.com.cn/problem/P1219" target="_blank" rel="noopener">洛谷 P1219 八皇后（DFS进阶）</a>
       </div>
     </div>
     <div class="day-block review-block">
@@ -4141,8 +4142,8 @@ function addStepLabels() {
       {q:"以下哪种排序算法不是稳定的？", type:"choice", opts:["冒泡排序", "选择排序", "插入排序", "归并排序"], ans:1, exp:"选择排序是不稳定的，因为交换可能改变相同元素的相对顺序。冒泡和插入是稳定的。"},
     ],
     20: [
-      {q:"枚举算法最适用于什么情况？", type:"choice", opts:["数据量小的问题", "所有问题", "只有排序问题", "只有搜索问题"], ans:0, exp:"枚举（暴力）适合数据范围小的问题，数据量大时效率太低。"},
-      {q:"把下列排序算法的平均时间复杂度按从优到劣排列：", type:"order", items:["冒泡排序 O(n^2)", "快速排序 O(n log n)", "归并排序 O(n log n)", "选择排序 O(n^2)"], order:[1,2,3,0], exp:"快速排序和归并排序平均 O(n log n) 优于 O(n^2) 的冒泡和选择排序。"},
+      {q:"递推算法的核心思想是？", type:"choice", opts:["用已知推未知", "暴力枚举所有可能", "分治求解", "贪心选择"], ans:0, exp:"递推是从已知的基础情况出发，通过递推关系式逐步求出后续结果。"},
+      {q:"斐波那契数列的递推公式是 f(n) = ____", type:"fill", ans:"f(n-1)+f(n-2)", exp:"斐波那契数列：每一项等于前两项之和，即 f(n) = f(n-1) + f(n-2)。"},
     ],
     21: [
       {q:"递归与循环的关系是？", type:"choice", opts:["所有递归都能改写成循环", "所有循环都能改写成递归", "两者完全等价", "两者毫无关系"], ans:1, exp:"理论上所有循环都可以改写成递归，但不是所有递归都能简单改写成循环（如树遍历）。"},
@@ -4159,7 +4160,8 @@ function addStepLabels() {
       {q:"STL 中队列的入队操作是 ____，出队操作是 pop()", type:"fill", ans:"push", exp:"队列 `push` 入队，`pop` 出队，`front` 查看队首。"},
     ],
     25: [
-      {q:"`int a[3][4];` 声明的二维数组共有多少个元素？", type:"choice", opts:["7", "12", "3", "4"], ans:1, exp:"3 行 4 列，共 3x4 = 12 个元素。"},
+      {q:"DFS（深度优先搜索）通常用什么实现？", type:"choice", opts:["队列", "栈或递归", "数组", "哈希表"], ans:1, exp:"DFS 用栈（或递归）实现，一路走到底再回溯；BFS 用队列实现。"},
+      {q:"BFS 的核心数据结构是 ____", type:"fill", ans:"队列", exp:"BFS（广度优先搜索）使用队列（Queue）实现，逐层扩展。"},
     ],
     26: [
       {q:"模拟算法的核心思想是？", type:"choice", opts:["暴力枚举", "按题目描述一步步执行", "找数学规律", "使用递归"], ans:1, exp:"模拟就是按照题目的过程描述，用代码一步步复现。"},
@@ -5252,14 +5254,14 @@ function addStepLabels() {
     17: [{ qidx:0, levels:["递归进阶的关键是理解递归调用过程。","汉诺塔是经典的递归问题。","P1028 数的计算也用递归思想求解。"] },{ qidx:1, levels:["函数的三个要素。","定义时要写什么？","返回类型、函数名、参数列表。"] }],
     18: [{ qidx:0, levels:["冒泡排序的名字暗示了什么？","像气泡一样，大的往上浮。","冒泡排序就是交换相邻的逆序元素。"] }],
     19: [{ qidx:0, levels:["三种排序各有特点。","选择排序是每次选最小的放前面。","选择排序的原理是：每轮找最小值交换到前面。"] },{ qidx:1, levels:["C++ STL 有现成的排序函数。","函数名是 s-o-r-t。","sort() 函数可以直接排序数组。"] }],
-    20: [{ qidx:0, levels:["枚举就是暴力尝试所有可能。","不放过任何一种情况。","枚举法就是穷举所有可能的答案。"] }],
+    20: [{ qidx:0, levels:["递推的核心思想是什么？","用已知推未知。","从基础情况出发，通过递推关系式求出后续结果。"] },{ qidx:1, levels:["斐波那契数列的递推公式是什么？","第n项等于前两项之和。","f(n) = f(n-1) + f(n-2)"] }],
     21: [{ qidx:0, levels:["第三周结束了，该回顾了。","函数和排序是重点。","回顾函数定义、递归终止、排序稳定性。"] }],
     22: [{ qidx:0, levels:["struct 可以把多个字段打包。","像一个表格的一行。","结构体是自定义数据类型，包含多个不同类型的字段。"] }],
     23: [{ qidx:0, levels:["栈的特点是后进先出。","想象一叠盘子。","LIFO: Last In First Out，选 B。"] },{ qidx:1, levels:["push 往栈顶放，push 添加到...","栈的哪一端？末尾！","push_back() 在栈/向量的末尾添加元素。"] }],
-    24: [{ qidx:0, levels:["二维数组就是数组的数组。","a[3][4] 表示 3 行 4 列。","3行4列的二维数组，选 A。"] }],
-    25: [{ qidx:0, levels:["DFS 遍历走到底再回退。","深度优先：先深入一条路。","DFS 用栈（或递归），BFS 用队列。"] }],
-    26: [{ qidx:0, levels:["二分搜索的前提条件。","数据必须是...什么状态？","有序！二分搜索只能对有序数组使用。"] }],
-    27: [{ qidx:0, levels:["贪心法每步都选当前最优。","不回头，只看眼前。","贪心法：每一步选择局部最优解。"] },{ qidx:1, levels:["动态规划和贪心的区别？","DP 会记住之前的结果。","DP 记录子问题解，贪心不回头看。"] }],
+    24: [{ qidx:0, levels:["队列的特点是什么？","先进先出。","FIFO: First In First Out，先进先出。"] },{ qidx:1, levels:["STL 队列入队操作叫什么？","p-u-s-h。","push() 入队，pop() 出队，front() 查看队首。"] }],
+    25: [{ qidx:0, levels:["DFS 遍历走到底再回退。","深度优先：先深入一条路。","DFS 用栈（或递归），BFS 用队列。"] },{ qidx:1, levels:["BFS 用什么数据结构？","逐层扩展，先来的先处理。","BFS 用队列（Queue）实现，先进先出。"] }],
+    26: [{ qidx:0, levels:["模拟算法是什么？","按题目描述一步步执行。","模拟就是按照题目描述的过程，用代码一步步复现。"] },{ qidx:1, levels:["模拟题不需要复杂推导，只需要...","忠实地...什么？","模拟题就是忠实地按照题目描述复现过程。"] }],
+    27: [{ qidx:0, levels:["CSP-J 比赛分为几轮？","初赛和复赛。","CSP-J 分初赛（选择题）和复赛（编程题）两轮。"] }],
     28: [{ qidx:0, levels:["考试前最重要的是什么？","除了知识，还有策略。","熟悉题型、控制时间、检查答案。"] }]
   };
 
@@ -5470,14 +5472,14 @@ function addStepLabels() {
     w3: { name: '第三周 · 函数与算法', color: '#ec4899', topics: [
       {day:15, name:'函数基础', deps:['嵌套循环']}, {day:16, name:'递归', deps:['函数基础']},
       {day:17, name:'递归应用', deps:['递归']}, {day:18, name:'冒泡排序', deps:['嵌套循环']},
-      {day:19, name:'选择/插入排序', deps:['冒泡排序']}, {day:20, name:'枚举与模拟', deps:['嵌套循环']},
+      {day:19, name:'选择/插入排序', deps:['冒泡排序']}, {day:20, name:'递推', deps:['嵌套循环','递归']},
       {day:21, name:'W3 复盘', deps:['递归','选择/插入排序']}
     ]},
     w4: { name: '第四周 · 综合冲刺', color: '#10b981', topics: [
       {day:22, name:'结构体', deps:['数组基础']}, {day:23, name:'栈', deps:['数组基础']},
-      {day:24, name:'二维数组', deps:['数组基础','嵌套循环']}, {day:25, name:'DFS', deps:['递归','栈']},
-      {day:26, name:'二分查找', deps:['for 循环','数组基础']}, {day:27, name:'贪心/DP 入门', deps:['递归']},
-      {day:28, name:'真题冲刺', deps:['二分查找','贪心/DP 入门']}
+      {day:24, name:'队列', deps:['数组基础']}, {day:25, name:'搜索入门（DFS/BFS）', deps:['递归','栈','队列']},
+      {day:26, name:'综合模拟', deps:['递推','排序']}, {day:27, name:'真题模拟·初赛', deps:['综合模拟']},
+      {day:28, name:'真题模拟·复赛', deps:['真题模拟·初赛']}
     ]}
   };
 
