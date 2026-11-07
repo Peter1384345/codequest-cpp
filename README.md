@@ -1,3 +1,5 @@
+> ⚠️ **本仓库内容已完整合并进 [cpp-oi-roadmap](https://github.com/Peter1384345/cpp-oi-roadmap)** 的 `codequest/` 目录（逐字节一致，仅少 LICENSE/README 两个仓库元数据文件）。cpp-oi-roadmap = C++ OI 学习路线图 + CodeQuest 平台二合一。本仓库 Pages 暂保留在线，后续更新请前往主仓库。
+>
 # CodeQuest C++ 竞赛学习平台
 
 > C++ 信息学竞赛一体化学习平台 · 课程 + 练习 + 路线图 + 仪表盘
